@@ -9,3 +9,4 @@
 - npm i --legacy-peer-deps react-toast-notifications
 - git stash
 - git reset --hard <commit>
+- check what are fragments...
