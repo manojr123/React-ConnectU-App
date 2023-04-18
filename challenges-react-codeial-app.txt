@@ -5,4 +5,5 @@
           <Route  path="/userinfo" element={<UserInfo />} />
           <Route  path="*" element={<Page404 />} />
 - Link ...replace anchor tag <a href="" > </a>  ...<Link to=""> </Link>
-
+- or what you could do is use package like : react-toastify or  react-notify-toast
+- npm i --legacy-peer-deps react-toast-notifications
