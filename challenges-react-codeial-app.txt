@@ -10,3 +10,4 @@
 - git stash
 - git reset --hard <commit>
 - check what are fragments...
+- { auth.user && auth.user.email ? email: "" } can be written as {auth.user?.email}

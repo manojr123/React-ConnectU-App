@@ -4,6 +4,7 @@ import { getPosts } from '../api';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
+import Settings from '../pages/Settings';
 
 // import { Loader } from './';
 // import App from './App';
@@ -35,6 +36,7 @@ function App() {
           <Route  path="/" element={<Home />} />
           <Route  path="/login" element={<Login />} />
           <Route  path="/register" element={<Signup />} />
+          <Route  path="/settings" element={<Settings />} />
 
           <Route  path="*" element={<Page404 />} />
         </Routes>
