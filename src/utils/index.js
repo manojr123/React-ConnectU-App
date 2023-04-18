@@ -1,6 +1,6 @@
 export const setItemInLocalStorage = (key, value) => {
   if (!key || !value) {
-    return console.error('Can not store in LS');
+    return console.error('Cannot store in Local storage');
   }
 
   const valueToStore =
@@ -11,32 +11,29 @@ export const setItemInLocalStorage = (key, value) => {
 
 export const getItemFromLocalStorage = (key) => {
   if (!key) {
-    return console.error('Can get the value from LS');
+    return console.error('Cannot get the value from Local storage');
   }
 
-  localStorage.getItem(key);
+  return localStorage.getItem(key);
 };
 
-export const removeItemFromLocalStorage = (value, key) => {
+export const removeItemFromLocalStorage = (key) => {
   if (!key) {
-    return console.error('Can get the value from LS');
+    return console.error('Cannot get the value from Local storage');
   }
 
   localStorage.removeItem(key);
 };
 
-
-
 export const getFormBody = (params) => {
-    let formBody = [];
-  
-    for (let property in params) {
-      let encodedKey = encodeURIComponent(property); // 'user name' => 'user%20name'
-      let encodedValue = encodeURIComponent(params[property]); // aakash 123 => aakash%2020123
-  
-      formBody.push(encodedKey + '=' + encodedValue);
-    }
-  
-    return formBody.join('&'); // 'username=aakash&password=123213'
-  };
-  
+  let formBody = [];
+
+  for (let property in params) {
+    let encodedKey = encodeURIComponent(property); // 'user name' => 'user%20name'
+    let encodedValue = encodeURIComponent(params[property]); // aakash 123 => aakash%2020123
+
+    formBody.push(encodedKey + '=' + encodedValue);
+  }
+
+  return formBody.join('&'); // 'username=aakash&password=123213'
+};

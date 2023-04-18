@@ -8,6 +8,7 @@ import Login from '../pages/Login';
 // import App from './App';
 import Loader from './Loader';
 import Navbar from './Navbar'
+import { useAuth } from '../hooks';
 
 
 const About = () => {
@@ -26,6 +27,7 @@ const Page404 = () => {
 function App() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const auth = useAuth();
 
   useEffect(() => {
     const fetchPosts = async () => {
