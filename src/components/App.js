@@ -25,25 +25,10 @@ const Page404 = () => {
 
 
 function App() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
   const auth = useAuth();
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await getPosts();
 
-      if (response.success) {
-        setPosts(response.data.posts);
-      }
-
-      setLoading(false);
-    };
-
-    fetchPosts();
-  }, []);
-
-  if (loading) {
+  if (auth.loading) {
     return <Loader />;
   }
 
@@ -52,7 +37,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route  path="/" element={<Home posts={posts} />} />
+          <Route  path="/" element={<Home />} />
           <Route  path="/login" element={<Login />} />
           <Route  path="/about" element={<About />} />
           <Route  path="/userinfo" element={<UserInfo />} />
