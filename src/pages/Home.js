@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { getPosts } from '../api';
+import { Link } from 'react-router-dom';
 
 import styles from '../styles/home.module.css';
 import Loader from '../components/Loader';
+import Comment from '../components/Comment';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -39,7 +41,18 @@ const Home = () => {
                 alt="user-pic"
               />
               <div>
-                <span className={styles.postAuthor}>{post.user.name}</span>
+                {console.log('post :', post)}
+              <Link
+                  to={{
+                    pathname: `/user/${post.user._id}`,
+                    state: {
+                      user: post.user,
+                    },
+                  }}
+                  className={styles.postAuthor}
+                >
+                  {post.user.name}
+              </Link>
                 <span className={styles.postTime}>a minute ago</span>
               </div>
             </div>
@@ -61,15 +74,9 @@ const Home = () => {
             </div>
 
             <div className={styles.postCommentsList}>
-              <div className={styles.postCommentsItem}>
-                <div className={styles.postCommentHeader}>
-                  <span className={styles.postCommentAuthor}>Bill</span>
-                  <span className={styles.postCommentTime}>a minute ago</span>
-                  <span className={styles.postCommentLikes}>22</span>
-                </div>
-
-                <div className={styles.postCommentContent}>Random comment</div>
-              </div>
+              {post.comments.map((comment) => (
+                <Comment comment={comment} />
+              ))}
             </div>
           </div>
         </div>

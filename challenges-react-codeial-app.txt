@@ -11,3 +11,5 @@
 - git reset --hard <commit>
 - check what are fragments...
 - { auth.user && auth.user.email ? email: "" } can be written as {auth.user?.email}
+- const { user = {} } = location.state // If state is null then location.state will return undefined...and so user will be assigned an empty object
+- 
