@@ -1,14 +1,40 @@
-import { useState } from 'react';
 import { useToasts } from 'react-toast-notifications';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import styles from '../styles/settings.module.css';
 import { useAuth } from '../hooks';
+import { fetchUserProfile } from '../api';
 
 const UserProfile = () => {
-  const location = useLocation();
-  console.log('location', location);
-  const { user = {} } = location.state;
+  const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
+  const { userId } = useParams();
+  const { addToast } = useToasts();
+  const navigate = useNavigate();
+  const auth = useAuth();
+
+
+  useEffect(() => {
+    const getUser = async () => {
+      const response = await fetchUserProfile(userId);
+
+      if (response.success) {
+        setUser(response.data.user);
+      } else {
+        addToast(response.message, {
+          appearance: 'error',
+        });
+        return navigate('/');
+      }
+
+      setLoading(false);
+    };
+
+    getUser();
+  }, [userId, navigate, addToast]);
+
+
 
   console.log('UserProfile user', user);
   return (
