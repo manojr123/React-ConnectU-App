@@ -1,9 +1,10 @@
 import { useToasts } from 'react-toast-notifications';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
 import styles from '../styles/settings.module.css';
 import { useAuth } from '../hooks';
+import Loader from '../components/Loader';
+
 import { fetchUserProfile } from '../api';
 
 const UserProfile = () => {
@@ -34,6 +35,9 @@ const UserProfile = () => {
     getUser();
   }, [userId, navigate, addToast]);
 
+  if (loading) {
+    return <Loader />;
+  }
 
 
   console.log('UserProfile user', user);

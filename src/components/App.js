@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {BrowserRouter as Router,Routes, Route, useNavigate} from 'react-router-dom'
-import { getPosts } from '../api';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';

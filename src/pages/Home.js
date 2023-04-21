@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { getPosts } from '../api';
 import { Link } from 'react-router-dom';
-
 import styles from '../styles/home.module.css';
 import Loader from '../components/Loader';
 import Comment from '../components/Comment';
+import { getPosts } from '../api';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
