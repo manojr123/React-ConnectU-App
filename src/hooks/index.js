@@ -185,6 +185,7 @@ export const useProvidePosts = () => {
     data: posts,
     loading,
     addPostToState,
+    addComment
   };
 };
 
